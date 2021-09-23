@@ -4,10 +4,9 @@ const fibonacci = (n, arr = []) => {
 
   const result = arr.length === 0 ? [0, 1] : Array.from(arr)
   if (result.length <= n) { // n >= 3
-    let nextFib = [result[result.length - 1] + result[result.length - 2]]
+    const nextFib = [result[result.length - 1] + result[result.length - 2]]
     return fibonacci(n, result.concat(nextFib))
   }
-
   return result[n]
 }
 
