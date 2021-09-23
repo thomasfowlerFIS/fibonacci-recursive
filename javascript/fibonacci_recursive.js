@@ -1,15 +1,14 @@
-const fibonacci = (n, seed = []) => {
-  const tempSeed = seed.length === 0 ? [0, 1] : seed.slice()
+const fibonacci = (n, arr = []) => {
+  if (n === 0) return 0
+  else if (n === 1) return 1 
 
-  if (n === 0) return tempSeed[0]
-  else if (n === 1) return tempSeed[1]
-
-  if (tempSeed.length <= n) { // n >= 3
-    tempSeed.push(tempSeed[tempSeed.length - 1] + tempSeed[tempSeed.length - 2])
-    return fibonacci(n, tempSeed) 
+  const result = arr.length === 0 ? [0, 1] : Array.from(arr)
+  if (result.length <= n) { // n >= 3
+    let nextFib = [result[result.length - 1] + result[result.length - 2]]
+    return fibonacci(n, result.concat(nextFib))
   }
 
-  return tempSeed[n]
+  return result[n]
 }
 
 if (require.main === module) {
